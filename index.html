@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://packet-clearing-house.github.io/maptable/maptable.css">
+  <title>Only Table and filters - sorting, virtual columns</title>
+</head>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8"></script>
+<script src="https://packet-clearing-house.github.io/maptable/maptable.min.js"></script>
+
+<div id="vizContainer" class='container'></div>
+
+<script>
+    var viz = d3.maptable('#vizContainer')
+    .json('table.json')
+    .columns({
+      source: {
+        filterMethod: 'dropdown',
+      },
+      author: {
+        filterMethod: 'dropdown',
+      },
+      period: {
+        filterMethod: 'dropdown',
+      },
+      location: {
+        filterMethod: 'dropdown',
+      },
+      institution: {
+        filterMethod: 'dropdown',
+      }
+    })
+    .filters({
+      show: ['source', 'author', 'citation', 'period', 'location', 'institution']
+    })
+    .table({
+      show: ['source', 'author', 'citation', 'period', 'location', 'institution']
+    })
+    .render();
+</script>
+
+
+</body>
+</html>
