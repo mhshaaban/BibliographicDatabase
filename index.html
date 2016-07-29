@@ -19,21 +19,12 @@
       source: {
         filterMethod: 'dropdown',
       },
-      author: {
-        filterMethod: 'dropdown',
-      },
       period: {
         filterMethod: 'dropdown',
       },
-      location: {
-        filterMethod: 'dropdown',
-      },
-      institution: {
-        filterMethod: 'dropdown',
-      }
     })
     .filters({
-      show: ['source', 'author', 'citation', 'period', 'location', 'institution']
+      show: ['source', 'author', 'period', 'location', 'institution']
     })
     .table({
       show: ['source', 'citation', 'period', 'location', 'institution']
