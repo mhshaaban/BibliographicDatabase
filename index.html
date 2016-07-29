@@ -16,27 +16,37 @@
     var viz = d3.maptable('#vizContainer')
     .json('table.json')
     .columns({
-      source: {
+      position: {
         filterMethod: 'dropdown',
       },
-      author: {
+      office: {
         filterMethod: 'dropdown',
       },
-      period: {
-        filterMethod: 'dropdown',
+      start_date: {
+        filterMethod: 'compare',
+        filterInputType: 'date',
+        dataParse: function(val) {
+          return new Date(val).getTime();
+        }
       },
-      location: {
-        filterMethod: 'dropdown',
+      salary: {
+        filterMethod: 'compare',
+        filterInputType: 'number',
+        dataParse: function(val) {
+          return parseInt(val.replace(/[^0-9]+/g, ''), 10);
+        }
       },
-      institution: {
-        filterMethod: 'dropdown',
+      links: {
+        virtual: function(d) {
+          return '<a href="#' + d.extn+ '">Link</a>';
+        }
       }
     })
     .filters({
-      show: ['source', 'author', 'citation', 'period', 'location', 'institution']
+      show: ['name', 'position', 'office', 'salary', 'start_date']
     })
     .table({
-      show: ['source', 'citation', 'period', 'location', 'institution']
+      show: ['name', 'position', 'office', 'salary', 'start_date', 'links']
     })
     .render();
 </script>
