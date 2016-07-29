@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://packet-clearing-house.github.io/maptable/maptable.css">
-  <title>Only Table and filters - sorting, virtual columns</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="maptable.css">
+    <title>Awqaf Online Bibliography</title>
 </head>
 <body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8"></script>
-<script src="https://packet-clearing-house.github.io/maptable/maptable.min.js"></script>
-
+<script src="d3.min.js" charset="utf-8"></script>
+<script src="topojson.min.js"></script>
+<script src="maptable.js"></script>
 <div id="vizContainer" class='container'></div>
 
 <script>
+    
     var viz = d3.maptable('#vizContainer')
-    .json('table.json')
-    .filters({
-      show: ['source', 'author', 'period', 'location', 'institution']
-    })
-    .table({
-      show: ['source', 'author', 'citation', 'period', 'location', 'institution']
-    })
-    .render();
+            .csv('basic.csv')
+            .map({ path: 'ne_110m_admin_0_countries.json' })
+            .filters()
+            .table()
+            .render();
+
 </script>
-
-
 </body>
 </html>
